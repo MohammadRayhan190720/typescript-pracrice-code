@@ -75,6 +75,31 @@ x = [10, 20]; // Not correct
   tsc --version
  ```
 
+### First typescript program  
+- typescript file extension is .ts
+  
+- Run the following program using tsc index.ts --watch command and then node index.js
+
+``` typescript
+
+// correct one using ts
+function addNumbers(num1: number, num2:number) {
+  console.log(num1 + num2);
+}
+
+addNumbers(20, 30);
+addNumbers(20, "30");
+
+
+let num1 = 20;
+console.log(num1);
+
+let name= "anisul islam";
+name. //intellisense support will be here
+```
+
+
+
 
 
 
