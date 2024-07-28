@@ -19,7 +19,7 @@
 - It can be used in both: client and server side.  
 - Intellisense IDE Support while coding: code completion, content assist and code hinting.
   
---Code Example of Javascript and TypeScript--
+-- Code Example of Javascript and TypeScript --
 ``` javascript
 // index.js
 // without typescript
@@ -54,16 +54,20 @@ x = true; // Not correct
 x = [10, 20]; // Not correct
 
 ```
---How does typescript work?--  
+-- How does typescript work? --  
 - index.ts -> tsc index.ts -> index.js
---Environment setup--
+  
+-- Environment setup --  
+
 -install node and Typescript
 
-```    local installation: npm intsall typescript --save-dev
+``` local installation: npm intsall typescript --save-dev
     Or
     global installation: npm install -g typescript ```
---check various versions:--
-```   node --version
+
+-- check various versions: --
+
+``` node --version
   npm --version
   tsc --version ```
 
