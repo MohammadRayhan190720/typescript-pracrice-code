@@ -1,3 +1,6 @@
+###### 1. Basic Typescript Topics  
+---
+
 ### 1.1 Introduction to Typescript
 # What is TypeScript?
 
@@ -14,4 +17,44 @@
 - increase readability and code quality  
 - We can use it React, Vue, popular JS libraray Angular use TypeScript.  
 - It can be used in both: client and server side.  
-- Intellisense IDE Support while coding: code completion, content assist and code hinting  
+- Intellisense IDE Support while coding: code completion, content assist and code hinting.
+  
+--Code Example of Javascript and TypeScript--
+``` javascript
+// index.js
+// without typescript
+function addNumbers(num1, num2) {
+  console.log(num1 + num2);
+}
+
+addNumbers(20, 30);
+addNumbers(20, '30');
+
+// with typescript
+// without typescript
+function addNumbers(num1: number, num2: number) {
+  console.log(num1 + num2);
+}
+
+addNumbers(20, 30); // no error
+addNumbers(20, '30'); // error
+
+// without typescript
+let x;
+x = 20; // correct
+x = 'anisul'; // correct
+x = true; // correct
+x = [10, 20]; // correct
+
+// with typescript
+let x: number;
+x = 20; // correct
+x = '20'; // Not correct
+x = true; // Not correct
+x = [10, 20]; // Not correct
+
+```
+
+
+
+  
