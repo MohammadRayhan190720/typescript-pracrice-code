@@ -54,6 +54,20 @@ x = true; // Not correct
 x = [10, 20]; // Not correct
 
 ```
+--How does typescript work?--  
+- index.ts -> tsc index.ts -> index.js
+--Environment setup--
+-install node and Typescript
+
+```    local installation: npm intsall typescript --save-dev
+    Or
+    global installation: npm install -g typescript ```
+--check various versions:--
+```   node --version
+  npm --version
+  tsc --version ```
+
+
 
 
 
