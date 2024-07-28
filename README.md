@@ -19,7 +19,7 @@
 - It can be used in both: client and server side.  
 - Intellisense IDE Support while coding: code completion, content assist and code hinting.
   
--- Code Example of Javascript and TypeScript --
+__ Code Example of Javascript and TypeScript __
 ``` javascript
 // index.js
 // without typescript
