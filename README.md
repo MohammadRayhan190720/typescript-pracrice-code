@@ -103,20 +103,15 @@ name. //intellisense support will be here
   - built in types: number, string, boolean, void, null, undefined, never
   - user-defined types: Arrays,Tuple, Enums, Classes, interfaces etc
 
-In TypeScript, you can use basic types to specify the type of variables, function parameters, and return values. Here are some of the basic types in TypeScript:
+In TypeScript, you can use basic types to specify the type of variables, function parameters, and return values. Here are some of the basic types in TypeScript:  
+
 1. <b> number: </b> Represents both integer and floating-point numbers.
-   ```javascript
+   ``` javascript
     let age: number = 25;
     let price: number = 9.99;
   ```
 
-2. <b> string: </b> Represents a sequence of characters.
-
-`javascript let name: string = 'John';`
-
-3. <b> boolean: </b> Represents a true or false value.  
-`let isDone: boolean = false;`
-
+2.string: Represents a sequence of characters.
 
 
 
