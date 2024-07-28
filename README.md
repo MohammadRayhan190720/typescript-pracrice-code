@@ -1,8 +1,8 @@
-###### 1. Basic Typescript Topics  
+# 1. Basic Typescript Topics  
 ---
 
-### 1.1 Introduction to Typescript
-# What is TypeScript?
+## 1.1 Introduction to Typescript
+### What is TypeScript?
 
 - In a simple words, Additional Types (tuples, enum, interfaces, generics etc) + JavaScript = TypeScript  
 - It is a superset of JS  
@@ -11,7 +11,7 @@
 - Js is dynamically types -> let x = 20;  
 - Typescript add static typing to js -> let x: number = 20;  
 
-# Why TypeScript?  
+### Why TypeScript?  
 
 - JS Check types in run time while typescript add static typing to JS so we can handle errors before running the program. We can handle errors beofre running the program.  
 - increase readability and code quality  
@@ -19,7 +19,7 @@
 - It can be used in both: client and server side.  
 - Intellisense IDE Support while coding: code completion, content assist and code hinting.
   
-# Code Example of Javascript and TypeScript  
+### Code Example of Javascript and TypeScript  
 ``` javascript
 // index.js
 // without typescript
@@ -54,10 +54,10 @@ x = true; // Not correct
 x = [10, 20]; // Not correct
 
 ```
-# How does typescript work?  
+### How does typescript work?  
 - index.ts -> tsc index.ts -> index.js
   
-# Environment setup  
+### Environment setup  
 
 -install node and Typescript
 
@@ -67,7 +67,7 @@ x = [10, 20]; // Not correct
 
 ```
 
-# check previous version
+### check previous version
 
 ```
  node --version
