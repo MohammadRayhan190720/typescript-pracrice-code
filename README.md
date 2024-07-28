@@ -470,7 +470,7 @@ let student1 = new Student("keya", 31, 1302020015);
 student1.display();
 ```
 - Encapsulation and access modifiers - 4 key principles of Object Oriented Programming (OOP): Inheritance, Abstraction, Encapsulation, Polymorphism. Encapsulation helps us to manage the visibility of class members. 4 Access modifiers: public, private, protected, readonly
-  
+![access-modifier.png](./images/access-modifiers.png);
 
 
 
