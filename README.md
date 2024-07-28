@@ -110,11 +110,37 @@ In TypeScript, you can use basic types to specify the type of variables, functio
     let age: number = 25;
     let price: number = 9.99;
   
-4.
-5.
-6.
-7.  
-3. 
+2. <b> string: <b> Represents a sequence of characters.
+   ` let name: string = 'John'; `
+   
+3. <b> boolean: <b>  Represents a true or false value.
+   `let isDone: boolean = false;`
+
+4. <b> any: <b> Represents a dynamic or untyped value. Avoid using this when possible, as it bypasses type checking. if you have no knowledge about the variable type use any type: user input values
+   ``` javascript
+   let data: any = 42;
+   data = 'Hello';
+
+   let password: any;
+   let passwords: any[];
+
+5. <b> void: <b> Represents the absence of a value, typically used as the return type of functions that don't return anything.
+   ```javascript
+   function logMessage(): void {
+   console.log('This is a log message.');
+   }
+6. null and undefined: Represent null and undefined values, respectively.
+   ```javascript
+   let n: null = null;
+   let u: undefined = undefined;
+
+7. never: Represents a value that never occurs, such as a function that throws an error or an infinite loop.
+```javascript
+function throwError(message: string): never {
+  throw new Error(message);
+}
+```
+These basic types provide a foundation for specifying the types of variables and data in TypeScript. You can use them to ensure type safety in your code and catch type-related errors at compile time.
   
 
 
