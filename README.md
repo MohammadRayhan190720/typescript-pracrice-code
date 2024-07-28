@@ -371,6 +371,107 @@ function requestHandler(requestType: RequestType) {
 }
 requestHandler('GET');
 ```
+8. class Type OOP - You can create class type as well. class can have constructor, properties, methods. create object let objectName = new className()
+- Class and constructor Example
+```typescript
+class User {
+  // properties, methods, constructor
+  userName: string;
+  age: number;
+
+  constructor(userName: string, age: number) {
+    this.userName = userName;
+    this.age = age;
+  }
+
+  display(): void {
+    console.log(`username: ${this.userName}, age: ${this.age}`);
+  }
+}
+
+let user1 = new User('Rayhan', 24);
+user1.display();
+
+let user2 = new User('Tamanna', 18);
+user2.display();
+```
+- Inheritance: inheritance helps us to acquire properties of one class to another
+```typescript
+class User {
+  userName: string;
+  age: number;
+
+  constructor(userName: string, age: number) {
+    this.userName = userName;
+    this.age = age;
+  }
+
+  display(): void {
+    console.log(`username: ${this.userName}, age: ${this.age}`);
+  }
+}
+
+class Student extends User {
+  studentId: number;
+
+  constructor(userName: string, age: number, studentId: number) {
+    super(userName, age);
+    this.studentId = studentId;
+  }
+  display(): void {
+    console.log(
+      `username: ${this.userName}, age: ${this.age}, id: ${this.studentId}`
+    );
+  }
+}
+
+let student1 = new Student('keya', 31, 1302020015);
+student1.display();
+
+let user1 = new User('Anisul Islam', 25);
+user1.display();
+
+// let user2 = new User("Rabeya Islam", 31);
+// user2.display();
+```
+- Abstract class
+  - abstraction helps us to hide the implementation of something.
+  - class declared with abstract keyword.
+  - object can not be created from abstract class.
+  -  if a class extends abstract class; it must inherit all the abstract methods
+```typescript
+abstract class User {
+  userName: string;
+  age: number;
+
+  constructor(userName: string, age: number) {
+    this.userName = userName;
+    this.age = age;
+  }
+
+  abstract display(): void;
+}
+
+class Student extends User {
+  studentId: number;
+
+  constructor(userName: string, age: number, studentId: number) {
+    super(userName, age);
+    this.studentId = studentId;
+  }
+  display(): void {
+    console.log(
+      `username: ${this.userName}, age: ${this.age}, id: ${this.studentId}`
+    );
+  }
+}
+
+let student1 = new Student("keya", 31, 1302020015);
+student1.display();
+```
+- Encapsulation and access modifiers - 4 key principles of Object Oriented Programming (OOP): Inheritance, Abstraction, Encapsulation, Polymorphism. Encapsulation helps us to manage the visibility of class members. 4 Access modifiers: public, private, protected, readonly
+  
+
 
 
 
