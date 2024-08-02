@@ -521,6 +521,458 @@ student1.display();
   // user1.display();
 ```
 
+#### Inheritance
+Inheritance allows a class to inherit properties and methods from another class.
+
+#### Encapsulation
+Encapsulation restricts direct access to some of an object's components, which can be achieved using access modifiers ####(private, protected, public).
+
+#### Polymorphism
+Polymorphism allows methods to do different things based on the object it is acting upon, even though they share the same name.
+
+#### Abstraction
+Abstraction allows you to define methods that must be created within any child classes built from the abstract class.
+
+Here’s an example that demonstrates all four principles:
+```typescript
+// Abstract class (Abstraction)
+abstract class Person {
+  private _name: string;
+  private _age: number;
+
+  constructor(name: string, age: number) {
+    this._name = name;
+    this._age = age;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  get age(): number {
+    return this._age;
+  }
+
+  // Abstract method
+  abstract getDescription(): string;
+}
+
+// Student class (Inheritance)
+class Student extends Person {
+  private _grade: number;
+
+  constructor(name: string, age: number, grade: number) {
+    super(name, age);
+    this._grade = grade;
+  }
+
+  get grade(): number {
+    return this._grade;
+  }
+
+  // Implementing abstract method (Polymorphism)
+  getDescription(): string {
+    return `Student: ${this.name}, Age: ${this.age}, Grade: ${this.grade}`;
+  }
+}
+
+// Teacher class (Inheritance)
+class Teacher extends Person {
+  private _subject: string;
+
+  constructor(name: string, age: number, subject: string) {
+    super(name, age);
+    this._subject = subject;
+  }
+
+  get subject(): string {
+    return this._subject;
+  }
+
+  // Implementing abstract method (Polymorphism)
+  getDescription(): string {
+    return `Teacher: ${this.name}, Age: ${this.age}, Subject: ${this.subject}`;
+  }
+}
+
+// Create instances and demonstrate polymorphism
+const student = new Student("Alice", 20, 90);
+const teacher = new Teacher("Bob", 45, "Mathematics");
+
+console.log(student.getDescription()); // Student: Alice, Age: 20, Grade: 90
+console.log(teacher.getDescription()); // Teacher: Bob, Age: 45, Subject: Mathematics
+
+// Encapsulation: attempting to access private properties directly will result in an error
+// console.log(student._name); // Error: Property '_name' is private and only accessible within class 'Person'.
+// console.log(teacher._subject); // Error: Property '_subject' is private and only accessible within class 'Teacher'.
+
+// Use getter methods to access encapsulated properties
+console.log(student.name); // Alice
+console.log(teacher.subject); // Mathematics
+```
+#### Explanation
+1. Abstraction:
+ - The Person class is abstract and contains an abstract method getDescription.
+ - This method must be implemented by any non-abstract subclass of Person.
+2. Encapsulation:
+   - Private properties (_name, _age, _grade, _subject) are used to restrict direct access.
+   - Getter methods (get name(), get age(), get grade(), get subject()) are provided to access these private properties.
+3. Inheritance:
+ - The Student and Teacher classes inherit from the Person class.
+ - They call the constructor of the parent class using super(name, age).
+4. Polymorphism:
+   - Both Student and Teacher implement the getDescription method from the Person class.
+   - This method behaves differently based on whether it's called on a Student or Teacher instance.
+  
+This example demonstrates how you can use these OOP principles in TypeScript to create a well-structured and maintainable codebase.
+
+### 9. Interface type
+
+```typescript
+// without interface
+let users: {
+  id: number,
+  name: string,
+  age: number,
+}[] = [];
+
+let user1: {
+  id: number,
+  name: string,
+  age: number,
+} = {
+  id: 1,
+  name: 'Mr. Potato',
+  age: 32,
+};
+
+let user2: {
+  id: number,
+  name: string,
+  age: number,
+} = { id: 2, name: 'Ms. Tomato', age: 21 };
+
+users.push(user1);
+users.push(user2);
+
+const printUserInfo = (user: { id: number, name: string, age: number }) => {
+  console.log(`userid = ${user.id}, name = ${user.name}, age = ${user.age}`);
+};
+
+users.forEach((user) => printUserInfo(user));
+
+// with interface
+interface User {
+  id: number;
+  name: string;
+  age: number;
+}
+
+let users: User[] = [];
+
+let user1: User = { id: 1, name: 'Mr. Potato', age: 32 };
+let user2: User = { id: 2, name: 'Ms. Tomato', age: 21 };
+
+users.push(user1);
+users.push(user2);
+
+const printUserInfo = (user: User) => {
+  console.log(`userid = ${user.id}, name = ${user.name}, age = ${user.age}`);
+};
+
+users.forEach((user) => printUserInfo(user));
+```
+```typescript
+    // class implements interface
+    interface UserFormatter {
+      formatUser: () => string;
+    }
+
+      export class User implements UserFormatter {
+        constructor(private fullName: string, private age: number) {}
+
+        formatUser = () => {
+          return `name: ${this.fullName}, age: ${this.age}`;
+        };
+      }
+
+      let user = new User("Mr. Potato", 32);
+      console.log(user);
+      console.log(user.formatUser());
+```
+
+### 10. Interface vs type
+- both are nearly similar in most cases.
+- However, Adding new filed after creation is possible for an interface but not possible for a type.
+```typescript
+// Example 1
+interface Color {
+  title: string;
+}
+interface Color {
+  text: string;
+}
+// now class A has access to title and string
+class A implements Color {
+  title: string;
+  text: string;
+}
+```
+- both can be extended
+```typescript
+interface IFUser {
+  name: string;
+}
+
+interface IFStudent extends IFUser {
+  student_id: string;
+}
+
+// Extending a type via intersections
+type User = {
+  name: string,
+};
+
+type Student = User & {
+  student_id: string,
+};
+
+let s1: Student;
+s1 = {
+  name: 'anisul islam',
+  student_id: '1302',
+};
+```
+```typescript
+interface IFUser {
+  name: string;
+}
+
+interface IFStudent extends IFUser {
+  student_id: string;
+}
+
+class Student implements IFStudent {
+  name: string;
+  student_id: string;
+
+  constructor(name, student_id) {
+    this.name = name;
+    this.student_id = student_id;
+  }
+
+  printDetails = () => {
+    return `${this.name}, ${this.student_id}`;
+  };
+}
+
+const s1 = new Student('anisul islam', '1302020017');
+console.log(s1.printDetails());
+```
+### 1.4 tsconfig
+- in terminal -> tsc --init
+- edit tsconfig.json as shown in the following example
+
+```jSON
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./public",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "include": ["./src"],
+  "files": ["./src/index.ts", "./src/app.ts"]
+}
+```
+### 1.5  function
+
+Explore TypeScript function types, including defining function signatures and using optional and default parameters.
+
+Sure, let's explore functions in TypeScript with some code examples. TypeScript is a statically typed superset of JavaScript, so you'll notice type annotations to specify the types of parameters and return values. This helps catch type-related errors at compile time.
+
+#### Basic Function in TypeScript:
+```typescript
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+const result: number = add(5, 3); // 'result' will be 8
+```
+#### Function with Default Parameter:
+You can specify default values for function parameters:
+
+```typescript
+function greet(name: string = "User"): string {
+    return `Hello, ${name}!`;
+}
+
+const message: string = greet(); // 'message' will be "Hello, User!"
+```
+In this example, the name parameter has a default value of "User". If you don't provide an argument when calling greet, it uses the default value.
+
+
+#### Function with Rest Parameters:
+Rest parameters allow you to pass an arbitrary number of arguments as an array:
+
+```typescript
+function sum(...numbers: number[]): number {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+
+const total: number = sum(1, 2, 3, 4, 5); // 'total' will be 15
+```
+The ...numbers syntax collects all arguments passed to the sum function into an array called numbers.
+
+#### Function with Callback:
+You can pass functions as parameters to other functions:
+
+```typescript
+function calculate(a: number, b: number, operation: (x: number, y: number) => number): number {
+    return operation(a, b);
+}
+
+const addition = (x: number, y: number) => x + y;
+const subtraction = (x: number, y: number) => x - y;
+
+const result1: number = calculate(5, 3, addition);      // 'result1' will be 8
+const result2: number = calculate(5, 3, subtraction);   // 'result2' will be 2
+```
+
+- Function signature
+
+```typescript
+// function signature
+let userInfo1: () => void;
+let userInfo2: (name: string) => void;
+let userInfo3: (name: string) => string;
+
+userInfo1 = () => {
+  console.log('Anisul Islam is 32 years old');
+};
+
+userInfo2 = (name: string) => {
+  console.log(`${name} is 32 years old`);
+};
+
+userInfo3 = (name: string): string => {
+  return `${name} is 32 years old`;
+};
+
+userInfo1();
+userInfo2('Anisul Islam');
+console.log(userInfo3('Anisul Islam'));
+```
+- function signature in interface
+
+```typescript
+   interface IUserFormatter{
+    formatUser: () => string
+  }
+
+  class User implements IUserFormatter{
+    constructor(private fullName: string, private age: number){}
+    formatUser = () => {
+      return `name: ${this.fullName}, age: ${this.age}`
+    }
+  }
+```
+###  DOM Manipulation with typescript
+- Example-1
+```typescript
+<body>
+  <input type="number" class="input1" placeholder="Enter any number" />
+  <input type="number" class="input2" placeholder="Enter any number" />
+  <button>Add</button>
+  <p></p>
+  <script src="./index.js"></script>
+</body>
+```
+``` typescript
+const number1 = document.querySelector(".input1") as HTMLInputElement;
+const number2 = document.querySelector(".input2") as HTMLInputElement;
+const addButton = document.querySelector("button")!;
+const result = document.querySelector("p")!;
+
+addButton?.addEventListener("click", () => {
+  const sum = Number(number1.value) + Number(number2.value);
+  result.textContent = `The result is ${sum}`;
+});
+```
+- Example-2
+```typescript
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>welcome</h1>
+    <form class="user-form">
+      <div>
+        <label for="username">Username: </label>
+        <input type="text" id="username" />
+      </div>
+      <div>
+        <label for="useremail">email: </label>
+        <input type="email" id="useremail" />
+      </div>
+
+      <div>
+        <label for="country">Country: </label>
+        <select name="country" id="country">
+          <option value="bangladesh">bangladesh</option>
+          <option value="india">india</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="feedback">feedback: </label>
+        <textarea name="feedback" id="feedback" cols="30" rows="5"></textarea>
+      </div>
+      <button type="submit">save</button>
+    </form>
+    <script src="../dist/index.js"></script>
+  </body>
+</html>
+```
+```typescript
+const form = document.querySelector('.user-form') as HTMLFormElement;
+console.log(form);
+
+const userNameInput = document.querySelector('#username') as HTMLInputElement;
+console.log(userNameInput);
+
+const userEmailInput = document.querySelector('#useremail') as HTMLInputElement;
+console.log(userEmailInput);
+
+const userCountrySelect = document.querySelector(
+  '#country'
+) as HTMLSelectElement;
+console.log(userCountrySelect);
+
+const userFeedback = document.querySelector('#feedback') as HTMLTextAreaElement;
+console.log(userFeedback);
+
+form.addEventListener('submit', (e: Event) => {
+  e.preventDefault();
+  let userData = {
+    userName: userNameInput.value,
+    userEmail: userEmailInput.value,
+    userCountry: userCountrySelect.value,
+    userFeedback: userFeedback.value,
+  };
+  console.log(userData);
+});
+```
+
 
 
 
